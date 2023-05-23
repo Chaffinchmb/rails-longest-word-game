@@ -1,0 +1,28 @@
+<div class="container">
+
+  <h1>New Game</h1>
+
+  <ul class="letters-list">
+    <% @letters.each do |letter| %>
+      <li class="letter-item">
+        <div class="square">
+          <%= letter.capitalize %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class='form'>
+    <form action="/score" method="post" data-turbo="false">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <%= hidden_field_tag :initial_letters, @letters %>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="word" placeholder="What is your word?" aria-label="What is your word?" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <input type="submit" class="input-group-text" id="basic-addon2" value="Play">
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
